@@ -11,3 +11,7 @@ You can actually use the singleGameFile to play it on your phone, tablet, or any
 Drag and drop the html file on your browser OR right click it and select 'open in browser'.
 ### Not PC
 Simply open the html file in browser.
+
+## Known issues
+- The current stable build will always result in the user having a 0 score.
+- If the user entered a name after it played the game, it will still show the name used in the prior round.
