@@ -27,7 +27,6 @@ const getComputerChoice = () => {
         result = 'scissors';
         break;
     }
-    console.log(result);
 }
 
 const determineWinner = (userChoice, computerChoice) => {
@@ -61,14 +60,12 @@ const playGame = (userSelectedInput) => {
     let computerChoice = getComputerChoice();
     
     let user = localStorage.getItem('userName');
-    let currentUser;
-    if(!currentUser){
-        currentUser = 'New user';
+    if(!user || user === null){
+        user = 'New user';
     } else {
-        currentUser = user;
+        user = localStorage.getItem('userName');
     }
-
     document.getElementById('gameOutcome').innerHTML = ((determineWinner(userChoice, computerChoice)));
     document.getElementById('computerChoice').innerHTML = `The computer chose: <strong>${computerChoice}</strong> and has now won ${computerScore} times.`;
-    document.getElementById('playerChoice').innerHTML = `${currentUser} chose: <strong>${userChoice}</strong> and has now won ${playerScore} times.`;
+    document.getElementById('playerChoice').innerHTML = `${user} chose: <strong>${userChoice}</strong> and has now won ${playerScore} times.`;
 } 
