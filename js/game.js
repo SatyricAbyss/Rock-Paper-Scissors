@@ -60,7 +60,13 @@ const playGame = (userSelectedInput) => {
     let userChoice = getUserChoice(userSelectedInput);
     let computerChoice = getComputerChoice();
     
-    let currentUser = localStorage.getItem('userName');
+    let user = localStorage.getItem('userName');
+    let currentUser;
+    if(!currentUser){
+        currentUser = 'New user';
+    } else {
+        currentUser = user;
+    }
 
     document.getElementById('gameOutcome').innerHTML = ((determineWinner(userChoice, computerChoice)));
     document.getElementById('computerChoice').innerHTML = `The computer chose: <strong>${computerChoice}</strong> and has now won ${computerScore} times.`;
