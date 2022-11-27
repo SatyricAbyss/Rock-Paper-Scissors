@@ -34,21 +34,27 @@ const determineWinner = (userChoice, computerChoice) => {
         return 'Tie';
     } else if(userChoice === 'rock') {
         if(computerChoice === 'paper'){
-        return 'Computer won';
+            computerScore++;
+            return 'Computer won';
         } else {
-        return 'Player won';
+            playerScore++;
+            return 'Player won';
         }
     } else if(userChoice === 'paper'){
         if(computerChoice === 'scissors'){
-        return 'Computer won';
+            computerScore++;
+            return 'Computer won';
         } else {
-        return 'Player won';
-        } 
+            playerScore++;
+            return 'Player won';
+        }
     } else if(userChoice === 'scissors'){
         if(computerChoice === 'rock'){
-        return 'Computer won';
+            computerScore++;
+            return 'Computer won';
         } else {
-        return 'Player won';
+            playerScore++;
+            return 'Player won';
         }
     } else if(userChoice === 'bomb'){
         return 'Player desimated computer';
@@ -58,7 +64,7 @@ const determineWinner = (userChoice, computerChoice) => {
 const playGame = (userSelectedInput) => {
     let userChoice = getUserChoice(userSelectedInput);
     let computerChoice = getComputerChoice();
-    
+
     let user = localStorage.getItem('userName');
     if(!user || user === null){
         user = 'New user';
@@ -68,4 +74,4 @@ const playGame = (userSelectedInput) => {
     document.getElementById('gameOutcome').innerHTML = ((determineWinner(userChoice, computerChoice)));
     document.getElementById('computerChoice').innerHTML = `The computer chose: <strong>${computerChoice}</strong> and has now won ${computerScore} times.`;
     document.getElementById('playerChoice').innerHTML = `${user} chose: <strong>${userChoice}</strong> and has now won ${playerScore} times.`;
-} 
+}
