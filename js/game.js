@@ -31,17 +31,21 @@ const getComputerChoice = () => {
 }
 
 const saveData = () => {
+    let user;
+
     localStorage.setItem('playerScore', playerScore);
     localStorage.setItem('computerScore', computerScore);
     if(!document.getElementById('userName').value) {
         localStorage.setItem('userName', 'Unknown');
+        user = "Unknown";
     } else {
         localStorage.setItem('userName', document.getElementById('userName').value);
+        user = localStorage.getItem('userName');
     }
     setUserOnScreen();
     document.getElementById('gameOutcome').innerHTML = `Your data has been saved.`;
     document.getElementById('computerChoice').innerHTML = `<strong>The computer</strong> saved with ${computerScore} victories.`;
-    document.getElementById('playerChoice').innerHTML = `<strong>${userName}</strong> saved with ${playerScore} victories.`;
+    document.getElementById('playerChoice').innerHTML = `<strong>${user}</strong> saved with ${playerScore} victories.`;
     document.getElementById('userName').value = user;
 }
 
@@ -77,6 +81,8 @@ const getData = () => {
 const resetData = () => {
     localStorage.clear();
     document.getElementById('gameOutcome').innerHTML = `You have reset your data`;
+    document.getElementById('computerChoice').innerHTML = ``;
+    document.getElementById('playerChoice').innerHTML = ``;
 }
 
 const setUserOnScreen = () => {
