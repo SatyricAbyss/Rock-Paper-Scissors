@@ -9,7 +9,11 @@
     <body onLoad="setUserOnScreen();">
         <section class="flex center column">
             <input type="text" id="userName" placeholder="Enter a new username" class="topOfPage"></input>
-            <button onClick="storeUser(document.getElementById('userName').value);" class="storeUserButton">Submit username</button>
+            <div class="save-buttons">
+                <button onClick="saveData()" class="storeUserButton">Save game</button>
+                <button onClick="getData()" class="storeUserButton">Load game</button>
+                <button onClick="resetData()" class="storeUserButton">Reset game</button>
+            </div>
             <h1 id="welcomeUser"></h1>
         </section>
         <section class="flex center">
@@ -23,6 +27,5 @@
             <p id="playerChoice"></p>
         </section>
         <script src="js/game.js"></script>
-        <script src="js/storeUser.js"></script>
     </body>
 </html>
