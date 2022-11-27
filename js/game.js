@@ -39,17 +39,37 @@ const saveData = () => {
         localStorage.setItem('userName', document.getElementById('userName').value);
     }
     setUserOnScreen();
-    console.log("Your player data has been saved. "+localStorage.getItem('userName')+": "+playerScore+" and Computer: "+computerScore);
+    document.getElementById('gameOutcome').innerHTML = `Your data has been saved.`;
+    document.getElementById('computerChoice').innerHTML = `<strong>The computer</strong> saved with ${computerScore} victories.`;
+    document.getElementById('playerChoice').innerHTML = `<strong>${userName}</strong> saved with ${playerScore} victories.`;
+    document.getElementById('userName').value = user;
 }
 
 const getData = () => {
-    let user = localStorage.getItem('userName');
-    playerScore = localStorage.getItem('playerScore');
-    computerScore = localStorage.getItem('computerScore');
+    let user;
+
+    if(!localStorage.getItem('userName')) {
+        user = "Unknown"
+    } else {
+        user = localStorage.getItem('userName');
+    }
+
+    if(!localStorage.getItem('playerScore')) {
+        playerScore = 0;
+    } else {
+        playerScore = localStorage.getItem('playerScore');
+    }
+
+    if(!localStorage.getItem('computerScore')) {
+        computerScore = 0;
+    } else {
+        computerScore = localStorage.getItem('computerScore');
+    }
+
     setUserOnScreen();
     document.getElementById('gameOutcome').innerHTML = `Your data has been loaded.`;
-    document.getElementById('computerChoice').innerHTML = `<strong>The computer</strong> has ${computerScore} victories.`;
-    document.getElementById('playerChoice').innerHTML = `<strong>${user}</strong> has ${playerScore} victories.`;
+    document.getElementById('computerChoice').innerHTML = `<strong>The computer</strong> loaded with ${computerScore} victories.`;
+    document.getElementById('playerChoice').innerHTML = `<strong>${user}</strong> loaded with ${playerScore} victories.`;
     document.getElementById('userName').value = user;
     console.log("Your game has loaded. "+localStorage.getItem('userName')+" with "+playerScore+" and "+computerScore+" defeats");
 }
@@ -107,7 +127,7 @@ const playGame = (userSelectedInput) => {
 
     let user = localStorage.getItem('userName');
     if(!user || user === null){
-        user = 'New user';
+        user = 'Unknown';
     } else {
         user = localStorage.getItem('userName');
     }
